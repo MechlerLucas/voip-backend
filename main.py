@@ -4,6 +4,7 @@ from user_funcions import register_payment
 from user_funcions import search_payment
 from user_funcions import search_audios
 from user_funcions import register_audio
+from text_to_speech import text_to_speech
 
 ##------------------------------------------------------------------------
 ##teste de registro de usuario
@@ -72,3 +73,29 @@ if register_audio(id_user, arq_name):
 else:
     print('Ocorreu um erro ao inserir o áudio.')
 
+##------------------------------------------------------------------------
+##teste de text to speech
+
+## vozes disponiveis
+## link: https://learn.microsoft.com/pt-br/azure/cognitive-services/speech-service/language-support?tabs=tts#custom-neural-voice
+## pt-BR-AntonioNeural (Masculino)
+## pt-BR-BrendaNeural (Feminino)
+## pt-BR-DonatoNeural (Masculino)
+## pt-BR-ElzaNeural (Feminino)
+## pt-BR-FabioNeural (Masculino)
+## pt-BR-FranciscaNeural (Feminino)
+## pt-BR-GiovannaNeural (Feminino)
+## pt-BR-HumbertoNeural (Masculino)
+## pt-BR-JulioNeural (Masculino)
+## pt-BR-LeilaNeural (Feminino)
+## pt-BR-LeticiaNeural (Feminino)
+## pt-BR-ManuelaNeural (Feminino)
+## pt-BR-NicolauNeural (Masculino)
+## pt-BR-ValerioNeural (Masculino)
+## pt-BR-YaraNeural (Feminino)
+
+voice_name = "pt-BR-AntonioNeural"
+
+text = "Teste de texto"
+
+text_to_speech(text, voice_name)
