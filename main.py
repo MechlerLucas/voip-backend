@@ -1,10 +1,5 @@
-from user_funcions import register_user
-from user_funcions import verify_login
-from user_funcions import register_payment
-from user_funcions import search_payment
-from user_funcions import search_audios
-from user_funcions import register_audio
-from text_to_speech import text_to_speech
+from user_funcions import *
+from text_to_speech import *
 
 ##------------------------------------------------------------------------
 ##teste de registro de usuario
@@ -65,13 +60,13 @@ else:
 ##------------------------------------------------------------------------
 ##teste de inserção de audios
 
-id_user = 123
-arq_name = 'meu_audio.wav'
-
-if register_audio(id_user, arq_name):
-    print(f'O áudio {arq_name} foi inserido com sucesso para o usuário {id_user}.')
-else:
-    print('Ocorreu um erro ao inserir o áudio.')
+# id_user = 123
+# arq_name = 'meu_audio.wav'
+#
+# if register_audio(id_user, arq_name):
+#     print(f'O áudio {arq_name} foi inserido com sucesso para o usuário {id_user}.')
+# else:
+#     print('Ocorreu um erro ao inserir o áudio.')
 
 ##------------------------------------------------------------------------
 ##teste de text to speech
@@ -95,7 +90,10 @@ else:
 ## pt-BR-YaraNeural (Feminino)
 
 voice_name = "pt-BR-AntonioNeural"
+user = 321
+text = "?você sabe o que é ligma? ligma bólls"
 
-text = "Teste de texto"
+text_to_speech(user, text, voice_name)
 
-text_to_speech(text, voice_name)
+
+
