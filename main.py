@@ -89,9 +89,9 @@ else:
 ## pt-BR-ValerioNeural (Masculino)
 ## pt-BR-YaraNeural (Feminino)
 
-voice_name = "pt-BR-AntonioNeural"
-user = 321
-text = "?você sabe o que é ligma? ligma bólls"
+voice_name = "pt-BR-BrendaNeural"
+user = 123
+text = "Esse é um teste de código 01"
 
 text_to_speech(user, text, voice_name)
 
