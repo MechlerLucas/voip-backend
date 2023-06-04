@@ -6,18 +6,6 @@ import os
 from user_funcions import insert_all
 
 speech_key, service_region = "538b25cfe5434badbd242b83178f261c", "brazilsouth"
-#Função para teste de audio
-def text_to_demo(voice_name, text):
-
-    speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
-    # Note: the voice setting will not overwrite the voice element in input SSML.
-    speech_config.speech_synthesis_voice_name = voice_name
-
-    # use the default speaker as audio output.
-    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
-
-    speech_synthesizer.speak_text_async(text).get()
-
 
 #Função para criação de audio e armazenamento em db e S3
 def text_to_speech(user, text, voice_name):
@@ -57,3 +45,5 @@ def text_to_speech(user, text, voice_name):
             if cancellation_details.error_details:
                 print("Error details: {}".format(cancellation_details.error_details))
         print("Did you update the subscription info?")
+
+    return filename
