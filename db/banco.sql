@@ -23,7 +23,9 @@ CREATE TABLE payment (
 	id_payment integer PRIMARY KEY AUTOINCREMENT,
 	value float,
 	id_user integer,
-	id_audio integer
+	id_audio integer,
+	id_type integer,
+	date_payment date
 );
 
 CREATE TABLE audio_preset (
@@ -32,8 +34,7 @@ CREATE TABLE audio_preset (
 	config text
 );
 
-
-
-
-
-
+CREATE TABLE type_payment (
+	id_type integer PRIMARY KEY AUTOINCREMENT,
+	name text
+);

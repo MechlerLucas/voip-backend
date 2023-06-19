@@ -89,7 +89,7 @@ else:
 ## pt-BR-ValerioNeural (Masculino)
 ## pt-BR-YaraNeural (Feminino)
 
-voice_name = "pt-BR-BrendaNeural"
+voice_name = "pt-BR-AntonioNeural"
 user = 123
 text = "Esse é um teste de código 01"
 

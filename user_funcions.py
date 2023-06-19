@@ -43,14 +43,15 @@ def verify_login(login, senha):
         print(e)
         return False
 
-def register_payment(valor, id_user, id_audio):
+def register_payment(valor, id_user, id_audio, id_type):
     try:
         # Conectar-se ao banco de dados
         conn = sqlite3.connect('db/banco.db')
         cursor = conn.cursor()
 
         # Inserir um novo registro na tabela de pagamentos
-        cursor.execute("INSERT INTO payment (value, id_user, id_audio) VALUES (?, ?, ?)",(valor, id_user, id_audio))
+        cursor.execute("INSERT INTO payment (value, id_user, id_audio, id_type, date_payment) VALUES (?, ?, ?, ?, ?)",
+                       (valor, id_user, id_audio, id_type, datetime.datetime.now()))
 
         # Salvar as mudanças no banco de dados e fechar a conexão
         conn.commit()
@@ -77,8 +78,8 @@ def search_payment(id_user):
         resultados = cursor.fetchall()
         lista_pagamentos = []
         for pagamento in resultados:
-            id_pagamento, valor, id_user, id_audio = pagamento
-            lista_pagamentos.append({'id_pagamento': id_pagamento, 'valor': valor, 'id_user': id_user, 'id_audio': id_audio})
+            id_payment, value, id_user, id_audio,id_type, date_payment, = pagamento
+            lista_pagamentos.append({'id_pagamento': id_payment, 'value': value, 'id_user': id_user, 'id_audio': id_audio,'date_payment':date_payment,'id_type': id_type})
 
         # Fechar a conexão com o banco de dados
         conn.close()
@@ -97,8 +98,8 @@ def search_audios(id_user):
         conn = sqlite3.connect('db/banco.db')
         cursor = conn.cursor()
 
-        # Pesquisar por todos os áudios relacionados a este usuário
-        cursor.execute("SELECT * FROM audio WHERE id_user = ?", (id_user,))
+        # Pesquisar por todos os áudios relacionados a este usuário, os quais possuem pagamento
+        cursor.execute("SELECT a.* FROM audio a JOIN payment p ON a.id_audio = p.id_audio WHERE a.id_user = ?", (id_user,))
 
         # Extrair os resultados da pesquisa e criar uma lista
         resultados = cursor.fetchall()
@@ -179,3 +180,5 @@ def insert_all(user, arq_name, text, config):
 
     # register audio_preset
     insert_audio_preset(id_text, config)
+    
+    return id_audio
